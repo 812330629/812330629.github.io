@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>川菜 - 中国八大菜系</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        lu: '#E63946',     // 鲁菜-红色
+                        chuan: '#FFB703',  // 川菜-橙色
+                        yue: '#1D3557',    // 粤菜-深蓝色
+                        su: '#457B9D',     // 苏菜-天蓝色
+                        min: '#2A9D8F',    // 闽菜-青绿色
+                        zhe: '#F4A261',    // 浙菜-浅橙色
+                        xiang: '#E9C46A',  // 湘菜-黄色
+                        hui: '#264653',    // 徽菜-深绿色
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .text-shadow {
+                text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            }
+            .section-fade {
+                transition: background-color 0.5s ease;
+            }
+        }
+    </style>
+</head>
+<body class="font-sans">
+    <!-- 导航栏 -->
+    <nav id="navbar" class="fixed w-full bg-white/90 shadow-md z-50 transition-all duration-300">
+        <div class="container mx-auto px-4 py-3 flex flex-wrap items-center justify-between">
+            <a href="index.html" class="text-2xl font-bold text-gray-800 flex items-center">
+                <i class="fa fa-cutlery mr-2"></i>八大菜系
+            </a>
+            <!-- 移动端菜单按钮 -->
+            <button id="menu-toggle" class="md:hidden text-gray-800 focus:outline-none">
+                <i class="fa fa-bars text-xl"></i>
+            </button>
+            <!-- 导航菜单 -->
+            <div id="menu" class="hidden w-full md:flex md:w-auto md:items-center mt-3 md:mt-0">
+                <ul class="flex flex-col md:flex-row md:space-x-6">
+                    <li><a href="index.html" class="py-2 px-1 hover:text-lu transition-colors">首页</a></li>
+                    <li><a href="lu.html" class="py-2 px-1 hover:text-lu transition-colors">鲁菜</a></li>
+                    <li><a href="chuan.html" class="py-2 px-1 text-chuan font-medium transition-colors">川菜</a></li>
+                    <li><a href="yue.html" class="py-2 px-1 hover:text-yue transition-colors">粤菜</a></li>
+                    <li><a href="su.html" class="py-2 px-1 hover:text-su transition-colors">苏菜</a></li>
+                    <li><a href="min.html" class="py-2 px-1 hover:text-min transition-colors">闽菜</a></li>
+                    <li><a href="zhe.html" class="py-2 px-1 hover:text-zhe transition-colors">浙菜</a></li>
+                    <li><a href="xiang.html" class="py-2 px-1 hover:text-xiang transition-colors">湘菜</a></li>
+                    <li><a href="hui.html" class="py-2 px-1 hover:text-hui transition-colors">徽菜</a></li>
+                    <li><a href="index.html#vote" class="py-2 px-1 hover:text-gray-600 transition-colors">投票</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 川菜头部横幅 -->
+    <section class="pt-28 pb-12 bg-chuan text-gray-800">
+        <div class="container mx-auto px-4">
+            <div class="text-center">
+                <h1 class="text-4xl md:text-5xl font-bold mb-4 text-shadow">川菜</h1>
+                <p class="text-xl md:text-2xl text-gray-800/90">中国八大菜系之魂 · 西南风味代表</p>
+                <p class="mt-6 max-w-3xl mx-auto text-gray-800/80">
+                    川菜，即四川菜肴，源于巴蜀之地，以“麻辣鲜香、调味多变、一菜一格、百菜百味”闻名，
+                    是中国最具影响力的菜系之一，既能登上高端宴席，也能融入市井家常，深受全球食客喜爱。
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 川菜详细介绍 -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <!-- 菜系起源与发展 -->
+            <div class="mb-16">
+                <h2 class="text-3xl font-bold mb-6 text-gray-800 border-l-4 border-chuan pl-4">起源与发展</h2>
+                <div class="flex flex-col md:flex-row gap-8 items-center">
+                    <div class="md:w-1/2">
+                        <p class="text-gray-600 mb-4">
+                            川菜的历史可追溯至2000多年前的巴蜀时期，《吕氏春秋》中就有“和之美者，阳朴之姜，招摇之桂”的记载，
+                            可见当时四川地区已注重调味。秦汉时期，随着丝绸之路的开通，胡椒、辣椒等香料传入，为川菜调味奠定基础；
+                            唐宋时期，川菜走向成熟，杜甫、苏轼等文人曾在诗文中盛赞四川美食；
+                            明清时期，川菜形成“一菜一格，百菜百味”的风格，郫县豆瓣、永川豆豉等特色调料的出现，
+                            让川菜风味更具辨识度，成为全国闻名的菜系。
+                        </p>
+                        <p class="text-gray-600">
+                            川菜的形成与四川的地理气候密切相关：四川地处盆地，气候潮湿，古代先民通过食用辣椒、花椒等辛香调料驱湿散寒，
+                            逐渐形成“喜麻辣”的饮食偏好；同时，四川物产丰富，粮、油、蔬、果、禽、畜、水产一应俱全，
+                            为川菜“菜式多样”提供了充足的食材支撑。
+                        </p>
+                    </div>
+                    <div class="md:w-1/2">
+                        <img src="https://picsum.photos/id/431/600/400" alt="川菜食材" class="rounded-lg shadow-xl w-full h-auto">
+                    </div>
+                </div>
+            </div>
+
+            <!-- 核心菜系特点 -->
+            <div class="mb-16">
+                <h2 class="text-3xl font-bold mb-6 text-gray-800 border-l-4 border-chuan pl-4">核心特点</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="bg-gray-50 p-6 rounded-lg shadow-sm">
+                        <div class="flex items-center mb-4">
+                            <i class="fa fa-tags text-chuan text-2xl mr-3"></i>
+                            <h3 class="text-xl font-semibold text-gray-800">调味多变，百菜百味</h3>
+                        </div>
+                        <p class="text-gray-600">
+                            川菜最核心的特色是“调味”，素有“七滋八味”之说（七滋：甜、酸、麻、辣、苦、香、咸；八味：鱼香、麻辣、酸辣、干烧、辣子、红油、怪味、椒麻）。
+                            同一食材可通过不同调料组合，呈现完全不同的风味，如鸡肉可做成宫保鸡丁（糊辣荔枝味）、口水鸡（红油味）、
+                            怪味鸡（复合怪味），真正实现“百菜百味”。
+                        </p>
+                    </div>
+                    <div class="bg-gray-50 p-6 rounded-lg shadow-sm">
+                        <div class="flex items-center mb-4">
+                            <i class="fa fa-pepper-hot text-chuan text-2xl mr-3"></i>
+                            <h3 class="text-xl font-semibold text-gray-800">麻辣鲜香，层次丰富</h3>
+                        </div>
+                        <p class="text-gray-600">
+                            川菜的“麻辣”并非单一刺激，而是“麻、辣、鲜、香”的融合：麻来自汉源花椒，辣来自四川辣椒（如二荆条、小米辣），
+                            鲜来自高汤或食材本味，香来自豆瓣、豆豉等发酵调料。例如水煮鱼，入口先觉麻，再品辣，后尝鲜，
+                            辣而不燥、麻而不苦，层次分明，回味无穷。
+                        </p>
+                    </div>
+                    <div class="bg-gray-50 p-6 rounded-lg shadow-sm">
+                        <div class="flex items-center mb-4">
+                            <i class="fa fa-fire text-chuan text-2xl mr-3"></i>
+                            <h3 class="text-xl font-semibold text-gray-800">技法多样，擅炒善烧</h3>
+                        </div>
+                        <p class="text-gray-600">
+                            川菜烹饪技法多达40余种，其中“小炒”“干烧”“干煸”“水煮”最具特色：小炒讲究“急火快炒”，火候需精准控制，
+                            确保食材脆嫩（如小炒黄牛肉）；干烧注重“收汁挂味”，用调料与食材慢烧，使味道渗透内部（如干烧鱼）；
+                            干煸则通过“煸干水分”突出食材香味（如干煸四季豆）。
+                        </p>
+                    </div>
+                    <div class="bg-gray-50 p-6 rounded-lg shadow-sm">
+                        <div class="flex items-center mb-4">
+                            <i class="fa fa-balance-scale text-chuan text-2xl mr-3"></i>
+                            <h3 class="text-xl font-semibold text-gray-800">雅俗共赏，兼顾众口</h3>
+                        </div>
+                        <p class="text-gray-600">
+                            川菜既有适合高端宴席的“官府菜”（如开水白菜、樟茶鸭），也有市井亲民的“家常菜”（如回锅肉、麻婆豆腐），
+                            同时能根据食客口味调整麻辣程度——喜辣者可享重辣，不喜辣者可选鱼香、茄汁等温和口味，真正做到“兼顾众口”，
+                            这也是川菜普及度极高的重要原因。
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 代表菜品详解 -->
+            <div>
+                <h2 class="text-3xl font-bold mb-8 text-gray-800 border-l-4 border-chuan pl-4">代表菜品详解</h2>
+                <div class="space-y-12">
+                    <!-- 麻婆豆腐 -->
+                    <div class="flex flex-col md:flex-row gap-8 items-center">
+                        <div class="md:w-1/2 order-2 md:order-1">
+                            <h3 class="text-2xl font-semibold mb-4 text-gray-800">麻婆豆腐</h3>
+                            <p class="text-gray-600 mb-4">
+                                麻婆豆腐是川菜“家常菜之王”，由清代同治年间成都“陈麻婆豆腐店”创制（店主陈氏因脸上有麻点，人称“陈麻婆”），
+                                最初为招待挑夫的廉价美食，如今已成为全球知名度最高的川菜之一，被列入国家级非物质文化遗产名录。
+                            </p>
+                            <p class="text-gray-600 mb-4">
+                                <span class="font-bold">做法特点：</span> 选用嫩豆腐（或豆花），切1厘米见方的小块，焯水去豆腥味；
+                                锅中放菜籽油，炒香牛肉末，加郫县豆瓣、豆豉炒出红油，再放姜末、蒜末、花椒粉炒香，加少量高汤烧开；
+                                放入豆腐块小火慢炖2-3分钟，勾薄芡，撒葱花、花椒粉即可。
+                            </p>
+                            <p class="text-gray-600">
+                                <span class="font-bold">口感风味：</span> 豆腐嫩而不散，牛肉末鲜香，汤汁麻辣滚烫，
+                                花椒的麻与辣椒的辣融合，咸鲜适中，是典型的“麻辣鲜香”风味，搭配米饭食用堪称经典。
+                            </p>
+                        </div>
+                        <div class="md:w-1/2 order-1 md:order-2">
+                            <img src="https://picsum.photos/id/292/600/400" alt="麻婆豆腐" class="rounded-lg shadow-xl w-full h-auto">
+                        </div>
+                    </div>
+
+                    <!-- 水煮鱼 -->
+                    <div class="flex flex-col md:flex-row gap-8 items-center">
+                        <div class="md:w-1/2">
+                            <img src="https://picsum.photos/id/674/600/400" alt="水煮鱼" class="rounded-lg shadow-xl w-full h-auto">
+                        </div>
+                        <div class="md:w-1/2">
+                            <h3 class="text-2xl font-semibold mb-4 text-gray-800">水煮鱼</h3>
+                            <p class="text-gray-600 mb-4">
+                                水煮鱼是川菜“江湖菜”的代表，源于重庆，最初是渔民为快速处理新鲜活鱼发明的做法，
+                                因“以水煮熟，红油封面”得名。20世纪90年代后，水煮鱼从重庆传遍全国，成为川菜中最受欢迎的“重口味”菜品之一。
+                            </p>
+                            <p class="text-gray-600 mb-4">
+                                <span class="font-bold">做法特点：</span> 选用3-4斤的草鱼（或花鲢），片成0.3厘米厚的鱼片，用料酒、盐、淀粉腌制10分钟；
+                                豆芽、金针菇等素菜焯水后铺在盆底；锅中放菜籽油，炸香姜片、蒜片、花椒、干辣椒，加郫县豆瓣炒出红油，
+                                加高汤烧开，放入鱼头、鱼骨煮5分钟，再下鱼片煮1-2分钟（鱼片变白即可），连汤带料倒入盆中；
+                                另起锅烧热油，淋在鱼片表面的花椒、辣椒上，激发香味。
+                            </p>
+                            <p class="text-gray-600">
+                                <span class="font-bold">口感风味：</span> 鱼片鲜嫩滑爽，入口即化，不腥不柴；汤汁麻辣浓郁，
+                                素菜吸收汤汁后鲜香入味，红油封面使菜品保持滚烫，越吃越香，是嗜辣者的“心头好”。
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- 回锅肉 -->
+                    <div class="flex flex-col md:flex-row gap-8 items-center">
+                        <div class="md:w-1/2 order-2 md:order-1">
+                            <h3 class="text-2xl font-semibold mb-4 text-gray-800">回锅肉</h3>
+                            <p class="text-gray-600 mb-4">
+                                回锅肉是川菜“家常菜之魂”，被誉为“川菜第一菜”，因“肉先煮后炒，再次入锅”得名。
+                                这道菜做法简单却极具川菜精髓，几乎每个四川家庭都会做，是检验川菜厨师基本功的“试金石”。
+                            </p>
+                            <p class="text-gray-600 mb-4">
+                                <span class="font-bold">做法特点：</span> 选用猪五花肉（带皮），冷水下锅煮至八成熟（用筷子能轻松插入），捞出切片（0.2厘米厚）；
+                                锅中不放油，直接下肉片煸炒，逼出油脂（使肉片焦香不腻），盛出备用；锅中留少许底油，炒香蒜苗段，
+                                加郫县豆瓣、甜面酱炒出香味，再放入肉片翻炒均匀，加少许白糖提鲜即可。
+                            </p>
+                            <p class="text-gray-600">
+                                <span class="font-bold">口感风味：</span> 肉片焦香带脆，肥而不腻，蒜苗鲜香微辣，
+                                豆瓣的咸香与甜面酱的微甜融合，味道醇厚，是最经典的“下饭神器”，搭配米饭或馒头都堪称绝配。
+                            </p>
+                        </div>
+                        <div class="md:w-1/2 order-1 md:order-2">
+                            <img src="https://picsum.photos/id/225/600/400" alt="回锅肉" class="rounded-lg shadow-xl w-full h-auto">
+                        </div>
+                    </div>
+
+                    <!-- 宫保鸡丁 -->
+                    <div class="flex flex-col md:flex-row gap-8 items-center">
+                        <div class="md:w-1/2">
+                            <img src="https://picsum.photos/id/488/600/400" alt="宫保鸡丁" class="rounded-lg shadow-xl w-full h-auto">
+                        </div>
+                        <div class="md:w-1/2">
+                            <h3 class="text-2xl font-semibold mb-4 text-gray-800">宫保鸡丁</h3>
+                            <p class="text-gray-600 mb-4">
+                                宫保鸡丁是川菜“外交菜”的代表，因清代山东巡抚丁宝桢（官衔“太子少保”，人称“丁宫保”）喜爱而得名。
+                                这道菜融合了川菜的“糊辣荔枝味”，酸甜适中、麻辣鲜香，不仅在国内广受欢迎，还成为国外中餐馆的“标配”菜品。
+                            </p>
+                            <p class="text-gray-600 mb-4">
+                                <span class="font-bold">做法特点：</span> 选用鸡胸肉（或鸡腿肉），切成1厘米见方的丁，用料酒、盐、淀粉腌制；
+                                花生米用油炸至酥脆，备用；调“荔枝味”酱汁：白糖、醋、生抽、料酒、淀粉、少许清水混合；
+                                锅中放底油，炒香干辣椒、花椒、姜末、蒜末，放入鸡丁炒至变白，倒入酱汁翻炒均匀，
+                                最后加入花生米翻炒10秒即可。
+                            </p>
+                            <p class="text-gray-600">
+                                <span class="font-bold">口感风味：</span> 鸡丁嫩滑，花生米酥脆，酱汁酸甜带微麻微辣（“荔枝味”突出酸甜平衡），
+                                口感丰富有层次，既能作为宴席菜，也能作为家常菜，老少皆宜。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 川菜文化影响 -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold mb-8 text-center text-gray-800">川菜的文化影响</h2>
+            <div class="max-w-4xl mx-auto bg-white p-8 rounded-lg shadow-sm">
+                <p class="text-gray-600 mb-6">
+                    川菜作为中国最具影响力的菜系之一，其文化辐射力远超地域界限，主要体现在以下三方面：
+                </p>
+                <ul class="space-y-4 text-gray-600">
+                    <li class="flex items-start">
+                        <i class="fa fa-check-circle text-chuan mt-1 mr-3"></i>
+                        <span><strong>饮食文化的“破圈者”：</strong> 川菜打破了“地域菜系”的局限，凭借“调味多变、兼顾众口”的特点，
+                        成为全国普及度最高的菜系——从东北到海南，从新疆到上海，几乎每个城市都有川菜馆；同时，川菜也是海外中餐馆的“主力菜系”，
+                        让“麻辣文化”成为中国饮食的重要符号。</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fa fa-check-circle text-chuan mt-1 mr-3"></i>
+                        <span><strong>调料产业的推动者：</strong> 川菜的流行带动了四川特色调料的产业化，郫县豆瓣、永川豆豉、汉源花椒、
+                        保宁醋等“川菜调料”成为全国知名品牌，形成了从种植、加工到销售的完整产业链，
+                        不仅推动了四川经济发展，也让“川菜味型”通过调料走进普通家庭。</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fa fa-check-circle text-chuan mt-1 mr-3"></i>
+                        <span><strong>生活方式的影响者：</strong> 川菜的“麻辣文化”逐渐演变为一种生活态度——“敢吃辣、不怕麻”象征着热情、豪爽的性格，
+                        同时，“火锅”（川菜分支）作为社交美食，成为朋友聚会、家庭聚餐的重要场景，
+                        推动了“共享式饮食”的流行，影响了现代人的社交生活方式。</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <p class="text-lg font-bold">中国八大菜系</p>
+                    <p class="text-gray-400 text-sm">探索中华美食文化</p>
+                </div>
+                <div class="flex space-x-4">
+                    <a href="index.html" class="text-gray-300 hover:text-white transition-colors">
+                        <i class="fa fa-home text-xl"></i>
+                    </a>
+                    <a href="index.html#vote" class="text-gray-300 hover:text-white transition-colors">
+                        <i class="fa fa-bar-chart text-xl"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-6 pt-6 text-center text-gray-400 text-sm">
+                <p>© 2023 八大菜系毕业设计网站 - 版权所有</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 返回顶部按钮 -->
+    <button id="back-to-top" class="fixed bottom-6 right-6 bg-gray-800 text-white w-12 h-12 rounded-full flex items-center justify-center shadow-lg opacity-0 invisible transition-all duration-300">
+        <i class="fa fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // 移动端菜单切换
+        document.getElementById('menu-toggle').addEventListener('click', function() {
+            const menu = document.getElementById('menu');
+            menu.classList.toggle('hidden');
+        });
+        // 导航栏滚动效果
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            const backToTop = document.getElementById('back-to-top');
+            if (window.scrollY > 100) {
+                navbar.classList.add('py-2');
+                navbar.classList.remove('py-3');
+                navbar.classList.add('shadow-lg');
+                backToTop.classList.remove('opacity-0', 'invisible');
+                backToTop.classList.add('opacity-100', 'visible');
+            } else {
+                navbar.classList.add('py-3');
+                navbar.classList.remove('py-2');
+                navbar.classList.remove('shadow-lg');
+                backToTop.classList.add('opacity-0', 'invisible');
+                backToTop.classList.remove('opacity-100', 'visible');
+            }
+        });
+        // 返回顶部功能
+        document.getElementById('back-to-top').addEventListener('click', function() {
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        });
+        // 平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.getElementById('menu').classList.add('hidden');
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
