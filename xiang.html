@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>湘菜 - 中国八大菜系</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        lu: '#E63946',     // 鲁菜-红色
+                        chuan: '#FFB703',  // 川菜-橙色
+                        yue: '#1D3557',    // 粤菜-深蓝色
+                        su: '#457B9D',     // 苏菜-天蓝色
+                        min: '#2A9D8F',    // 闽菜-青绿色
+                        zhe: '#F4A261',    // 浙菜-浅橙色
+                        xiang: '#E9C46A',  // 湘菜-黄色
+                        hui: '#264653',    // 徽菜-深绿色
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .text-shadow {
+                text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            }
+            .section-fade {
+                transition: background-color 0.5s ease;
+            }
+        }
+    </style>
+</head>
+<body class="font-sans">
+    <!-- 导航栏 -->
+    <nav id="navbar" class="fixed w-full bg-white/90 shadow-md z-50 transition-all duration-300">
+        <div class="container mx-auto px-4 py-3 flex flex-wrap items-center justify-between">
+            <a href="index.html" class="text-2xl font-bold text-gray-800 flex items-center">
+                <i class="fa fa-cutlery mr-2"></i>八大菜系
+            </a>
+            <!-- 移动端菜单按钮 -->
+            <button id="menu-toggle" class="md:hidden text-gray-800 focus:outline-none">
+                <i class="fa fa-bars text-xl"></i>
+            </button>
+            <!-- 导航菜单 -->
+            <div id="menu" class="hidden w-full md:flex md:w-auto md:items-center mt-3 md:mt-0">
+                <ul class="flex flex-col md:flex-row md:space-x-6">
+                    <li><a href="index.html" class="py-2 px-1 hover:text-lu transition-colors">首页</a></li>
+                    <li><a href="lu.html" class="py-2 px-1 hover:text-lu transition-colors">鲁菜</a></li>
+                    <li><a href="chuan.html" class="py-2 px-1 hover:text-chuan transition-colors">川菜</a></li>
+                    <li><a href="yue.html" class="py-2 px-1 hover:text-yue transition-colors">粤菜</a></li>
+                    <li><a href="su.html" class="py-2 px-1 hover:text-su transition-colors">苏菜</a></li>
+                    <li><a href="min.html" class="py-2 px-1 hover:text-min transition-colors">闽菜</a></li>
+                    <li><a href="zhe.html" class="py-2 px-1 hover:text-zhe transition-colors">浙菜</a></li>
+                    <li><a href="xiang.html" class="py-2 px-1 text-xiang font-medium transition-colors">湘菜</a></li>
+                    <li><a href="hui.html" class="py-2 px-1 hover:text-hui transition-colors">徽菜</a></li>
+                    <li><a href="index.html#vote" class="py-2 px-1 hover:text-gray-600 transition-colors">投票</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 湘菜头部横幅 -->
+    <section class="pt-28 pb-12 bg-xiang text-gray-800">
+        <div class="container mx-auto px-4">
+            <div class="text-center">
+                <h1 class="text-4xl md:text-5xl font-bold mb-4 text-shadow">湘菜</h1>
+                <p class="text-xl md:text-2xl text-gray-800/90">中国八大菜系之“辣” · 中南风味灵魂</p>
+                <p class="mt-6 max-w-3xl mx-auto text-gray-800/80">
+                    湘菜，即湖南菜，融合湘江流域、洞庭湖区、湘西山区三大风味，以“辣得过瘾、香得醇厚、鲜得地道、酸得开胃”著称，
+                    是中南地区饮食文化的代表，既带着江湖的豪爽，又藏着家常的温情，每一口都是湖南人“无辣不欢”的生活态度。
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 湘菜详细介绍 -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <!-- 菜系起源与发展 -->
+            <div class="mb-16">
+                <h2 class="text-3xl font-bold mb-6 text-gray-800 border-l-4 border-xiang pl-4">起源与发展</h2>
+                <div class="flex flex-col md:flex-row gap-8 items-center">
+                    <div class="md:w-1/2">
+                        <p class="text-gray-600 mb-4">
+                            湘菜的历史可追溯至先秦时期的“楚菜”，《楚辞》中就有“和酸若苦，陈吴羹些”的记载，可见当时湖南地区已注重调味；
+                            唐宋时期，湖南成为鱼米之乡，饮食文化快速发展，杜甫、柳宗元等文人曾在诗文中赞美湖南美食；
+                            明清时期，湘菜进入成熟阶段，形成“湘江流域菜（长沙、湘潭、衡阳）、洞庭湖区菜（岳阳、常德）、湘西山区菜（湘西州、张家界）”三大分支——
+                            湘江菜重小炒，洞庭菜重河鲜，湘西菜重腊熏，共同构成湘菜“多元而统一”的风格，跻身八大菜系。
+                        </p>
+                        <p class="text-gray-600">
+                            湘菜的“嗜辣”特点与湖南地理气候密不可分：湖南地处长江中游，气候潮湿多雨，古代先民通过食用辣椒、花椒驱湿散寒，
+                            逐渐形成“无辣不食”的饮食偏好；同时，湖南物产丰富——洞庭湖的鱼虾、湘江的家畜、湘西的山珍（腊肉、竹笋），
+                            为湘菜提供了多样食材；加之湖南人“坚韧豪爽”的性格，使湘菜既“重味”又“实在”，充满烟火气。
+                        </p>
+                    </div>
+                    <div class="md:w-1/2">
+                        <img src="images/湘菜.png" alt="湘菜食材" class="rounded-lg shadow-xl w-full h-auto">
+                    </div>
+                </div>
+            </div>
+
+            <!-- 核心菜系特点 -->
+            <div class="mb-16">
+                <h2 class="text-3xl font-bold mb-6 text-gray-800 border-l-4 border-xiang pl-4">核心特点</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="bg-gray-50 p-6 rounded-lg shadow-sm">
+                        <div class="flex items-center mb-4">
+                            <i class="fa fa-pepper-hot text-xiang text-2xl mr-3"></i>
+                            <h3 class="text-xl font-semibold text-gray-800">辣香鲜酸，层次丰富</h3>
+                        </div>
+                        <p class="text-gray-600">
+                            湘菜的“辣”并非单一刺激，而是“辣、香、鲜、酸”的融合：辣来自湖南本地辣椒（如牛角椒、小米辣，辣而不燥），
+                            香来自豆豉、紫苏、大蒜（炒香后增味），鲜来自高汤或食材本味（如剁椒鱼头的鱼鲜），
+                            酸来自酸豆角、酸辣椒（解辣开胃）。例如小炒黄牛肉，入口先觉辣，再品牛肉香，后尝紫苏鲜，
+                            最后酸豆角中和辣味，层次分明，越吃越开胃，是“湘菜味型”的典范。
+                        </p>
+                    </div>
+                    <div class="bg-gray-50 p-6 rounded-lg shadow-sm">
+                        <div class="flex items-center mb-4">
+                            <i class="fa fa-fire text-xiang text-2xl mr-3"></i>
+                            <h3 class="text-xl font-semibold text-gray-800">腊熏煨蒸，风味独特</h3>
+                        </div>
+                        <p class="text-gray-600">
+                            湘菜擅长“腊、熏、煨、蒸”等技法，尤其以“腊熏菜”最具特色：湘西腊肉用松木、柏树枝慢熏，
+                            色泽红亮，香气浓郁；腊鱼、腊鸡则通过风干+熏制保存，冬季食用风味最佳。煨菜讲究“慢火细煨”，
+                            如煨土鸡需用陶瓮密封，以柴火慢煨3小时，汤汁浓郁；蒸菜注重“原汁原味”，如清蒸鲈鱼仅用剁椒提味，
+                            鲜辣可口，体现湘菜“重味不重油”的特点。
+                        </p>
+                    </div>
+                    <div class="bg-gray-50 p-6 rounded-lg shadow-sm">
+                        <div class="flex items-center mb-4">
+                            <i class="fa fa-scissors text-xiang text-2xl mr-3"></i>
+                            <h3 class="text-xl font-semibold text-gray-800">刀工精妙，适配火候</h3>
+                        </div>
+                        <p class="text-gray-600">
+                            湘菜刀工虽不似苏菜“细如丝”，却胜在“适配火候”：小炒黄牛肉需将牛肉切成“薄片”，
+                            确保急火快炒后嫩而不柴；剁椒鱼头需将鱼头从背部剖开（腹部相连），既易入味又显完整；
+                            湘西外婆菜需将萝卜干、豆角切“小丁”，与腊肉丁翻炒时均匀挂味。湘菜刀工的核心是“实用”——
+                            一切为了“入味”和“口感”，不追求刻意的造型，却透着家常的亲切。
+                        </p>
+                    </div>
+                    <div class="bg-gray-50 p-6 rounded-lg shadow-sm">
+                        <div class="flex items-center mb-4">
+                            <i class="fa fa-home text-xiang text-2xl mr-3"></i>
+                            <h3 class="text-xl font-semibold text-gray-800">家常实在，烟火气浓</h3>
+                        </div>
+                        <p class="text-gray-600">
+                            湘菜是“八大菜系中最具家常感的菜系”：食材多为常见的家畜、水产、蔬菜，不追求山珍海味；
+                            做法简单易学，如青椒炒肉、番茄炒蛋（湘菜版加辣椒），几乎每个湖南家庭都会做；
+                            分量实在，讲究“吃饱吃好”，不搞精致摆盘却充满烟火气。这种“家常实在”的特点，
+                            让湘菜不仅在湖南受欢迎，更在全国普及——街头湘菜馆多以“家常菜”为卖点，亲民又下饭。
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 代表菜品详解 -->
+            <div>
+                <h2 class="text-3xl font-bold mb-8 text-gray-800 border-l-4 border-xiang pl-4">代表菜品详解</h2>
+                <div class="space-y-12">
+                    <!-- 剁椒鱼头 -->
+                    <div class="flex flex-col md:flex-row gap-8 items-center">
+                        <div class="md:w-1/2 order-2 md:order-1">
+                            <h3 class="text-2xl font-semibold mb-4 text-gray-800">剁椒鱼头</h3>
+                            <p class="text-gray-600 mb-4">
+                                剁椒鱼头是湘菜“招牌菜”，源于湘潭，因“用剁椒覆盖鱼头蒸制”得名，如今已成为全国知名的湘菜代表，
+                                几乎每个湘菜馆的菜单上都有这道菜。传统选用“胖头鱼”（鳙鱼）的鱼头，肉质细嫩，
+                                剁椒的辣与鱼头的鲜完美融合，是“湘菜辣鲜风味”的极致体现，也是湖南人宴席的“硬菜”。
+                            </p>
+                            <p class="text-gray-600 mb-4">
+                                <span class="font-bold">做法特点：</span> 选用3-4斤的胖头鱼鱼头，处理干净后从背部剖开（腹部相连），
+                                用盐、料酒、姜片腌制10分钟；
+                                鱼头表面铺满自制剁椒（湖南牛角椒剁碎，加盐、白酒、蒜末腌制3天），
+                                撒上姜丝、葱段、紫苏叶；
+                                蒸锅水烧开后，放入鱼头，大火蒸12-15分钟（根据鱼头大小调整）；
+                                蒸好后倒掉盘中腥水，淋上热油激发香味，撒葱花即可。
+                            </p>
+                            <p class="text-gray-600">
+                                <span class="font-bold">口感风味：</span> 鱼头肉质细嫩滑爽，入口即化，
+                                剁椒的辣鲜完全渗透鱼肉，不腥不柴；紫苏叶的清香中和辣味，姜丝、葱段去腥增香；
+                                最精华的是“鱼脑”，软糯鲜香，带着剁椒的味道，堪称“人间美味”；
+                                汤汁可用来拌米饭，是典型的“下饭神器”，嗜辣者直呼过瘾。
+                            </p>
+                        </div>
+                        <div class="md:w-1/2 order-1 md:order-2">
+                            <img src="images/剁椒鱼头.png" alt="剁椒鱼头" class="rounded-lg shadow-xl w-full h-auto">
+                        </div>
+                    </div>
+
+                    <!-- 毛氏红烧肉 -->
+                    <div class="flex flex-col md:flex-row gap-8 items-center">
+                        <div class="md:w-1/2">
+                            <img src="images/毛氏红烧肉.png" alt="毛氏红烧肉" class="rounded-lg shadow-xl w-full h-auto">
+                        </div>
+                        <div class="md:w-1/2">
+                            <h3 class="text-2xl font-semibold mb-4 text-gray-800">毛氏红烧肉</h3>
+                            <p class="text-gray-600 mb-4">
+                                毛氏红烧肉是湘菜“文人菜”与“家常菜”的结合，因毛主席喜爱而得名，
+                                源于湖南韶山，在传统红烧肉基础上改良——减少糖分，增加辣椒、八角的香味，
+                                既保留红烧肉的醇厚，又带着湘菜的辣香，如今已成为湘菜的“文化符号”，
+                                象征湖南人“豪放而不失细腻”的性格。
+                            </p>
+                            <p class="text-gray-600 mb-4">
+                                <span class="font-bold">做法特点：</span> 选用带皮五花肉（肥三瘦七），切成3厘米见方的块，
+                                冷水下锅焯水去血沫；
+                                锅中放少许油，放入肉块煸炒至表面微黄（逼出部分油脂），加姜片、葱段、八角、桂皮炒香；
+                                加料酒、酱油、少许白糖（提鲜不甜腻）、干辣椒，翻炒均匀后加清水没过肉块；
+                                大火烧开后转小火慢炖1.5小时，最后大火收汁，使汤汁均匀裹在肉块上即可。
+                            </p>
+                            <p class="text-gray-600">
+                                <span class="font-bold">口感风味：</span> 肉块酥烂却不散，肥肉入口即化，
+                                油脂已大部分挥发，不腻不柴；瘦肉部分鲜嫩多汁，带着酱油的酱香、辣椒的辣香，
+                                甜咸平衡；汤汁浓稠，可用来拌米饭或拌面，
+                                既有传统红烧肉的醇厚，又有湘菜的独特辣味，是“老少皆宜”的经典菜。
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- 湘西外婆菜 -->
+                    <div class="flex flex-col md:flex-row gap-8 items-center">
+                        <div class="md:w-1/2 order-2 md:order-1">
+                            <h3 class="text-2xl font-semibold mb-4 text-gray-800">湘西外婆菜</h3>
+                            <p class="text-gray-600 mb-4">
+                                湘西外婆菜是湘菜“湘西风味”的代表，源于湘西土家族、苗族地区，
+                                因“外婆手工制作，带着家的味道”得名，最初是为保存蔬菜（萝卜、豆角）发明的腌菜，
+                                如今已成为湘菜的“家常必备菜”。这道菜以“咸鲜辣脆”为特点，
+                                食材简单却充满地域特色，是湘西人“就地取材、智慧饮食”的体现。
+                            </p>
+                            <p class="text-gray-600 mb-4">
+                                <span class="font-bold">做法特点：</span> 食材为自制腌菜（萝卜干、豆角干、辣椒干，提前泡软切碎）、
+                                湘西腊肉（切丁）、鸡蛋（炒熟切碎）；
+                                锅中放猪油（增香），烧热后放入腊肉丁煸炒出油，加蒜末、小米辣炒香；
+                                放入腌菜碎，大火快速翻炒2-3分钟（炒出香味）；
+                                加入鸡蛋碎，加少许盐、生抽调味，翻炒均匀即可。
+                            </p>
+                            <p class="text-gray-600">
+                                <span class="font-bold">口感风味：</span> 腌菜脆爽可口，腊肉咸香浓郁，
+                                鸡蛋碎增加顺滑口感，小米辣的辣度适中，不冲不燥；
+                                整体味道咸鲜带辣，开胃解腻，无论是配米饭、馒头还是粥，都堪称绝配；
+                                因食材易保存，这道菜也成为“思乡菜”，让在外的湘西人一口尝到“家的味道”。
+                            </p>
+                        </div>
+                        <div class="md:w-1/2 order-1 md:order-2">
+                            <img src="images/湘西外婆菜.png" alt="湘西外婆菜" class="rounded-lg shadow-xl w-full h-auto">
+                        </div>
+                    </div>
+
+                    <!-- 小炒黄牛肉 -->
+                    <div class="flex flex-col md:flex-row gap-8 items-center">
+                        <div class="md:w-1/2">
+                            <img src="images/小炒黄牛肉.png" alt="小炒黄牛肉" class="rounded-lg shadow-xl w-full h-auto">
+                        </div>
+                        <div class="md:w-1/2">
+                            <h3 class="text-2xl font-semibold mb-4 text-gray-800">小炒黄牛肉</h3>
+                            <p class="text-gray-600 mb-4">
+                                小炒黄牛肉是湘菜“小炒技法”的代表，源于长沙，因“急火快炒、牛肉鲜嫩”闻名，
+                                是湘菜馆的“销量冠军”。这道菜做法简单却极考验火候——油温需达到200℃以上，
+                                牛肉下锅后10秒内完成翻炒，确保外香里嫩，是检验湘菜厨师“火候把控”的基础菜。
+                            </p>
+                            <p class="text-gray-600 mb-4">
+                                <span class="font-bold">做法特点：</span> 选用黄牛肉的里脊肉（最嫩部位），切成0.2厘米厚的薄片，
+                                用料酒、盐、淀粉、少许食用油腌制10分钟（锁住水分）；
+                                青椒、红椒切成丝，酸豆角切成丁，紫苏叶切碎；
+                                锅中放菜籽油（烟点高，适合爆炒），油温八成热时放入牛肉片，快速翻炒至表面变色（约10秒），盛出备用；
+                                锅中留底油，炒香蒜末、小米辣，放入青红椒丝、酸豆角丁翻炒1分钟，
+                                加入牛肉片、紫苏叶，加少许生抽调味，翻炒10秒即可。
+                            </p>
+                            <p class="text-gray-600">
+                                <span class="font-bold">口感风味：</span> 牛肉片鲜嫩多汁，不柴不硬，
+                                青红椒的脆爽、酸豆角的酸味、紫苏叶的清香、小米辣的辣味，
+                                与牛肉的香味完美融合，咸鲜辣爽，一口下去“开胃又下饭”；
+                                因炒制时间短，牛肉的营养保留完整，是“家常快手菜”的典范，
+                                深受上班族和学生党喜爱。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 湘菜文化影响 -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold mb-8 text-center text-gray-800">湘菜的文化影响</h2>
+            <div class="max-w-4xl mx-auto bg-white p-8 rounded-lg shadow-sm">
+                <p class="text-gray-600 mb-6">
+                    湘菜不仅是一种饮食风格，更是湖湘文化“坚韧、豪爽、务实”的缩影，其影响跨越地域，深入生活的方方面面：
+                </p>
+                <ul class="space-y-4 text-gray-600">
+                    <li class="flex items-start">
+                        <i class="fa fa-check-circle text-xiang mt-1 mr-3"></i>
+                        <span><strong>中南饮食文化的“主导者”：</strong> 湘菜以“辣”为核心，影响了湖北、江西、贵州等周边省份的饮食——
+                        湖北菜的“辣鲜”、江西菜的“重辣”、贵州菜的“酸辣”，都能看到湘菜的影子；
+                        同时，湘菜的“小炒技法”“腊熏工艺”也被这些菜系借鉴，形成“中南辣文化圈”，
+                        成为中国饮食文化中极具特色的地域流派。</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fa fa-check-circle text-xiang mt-1 mr-3"></i>
+                        <span><strong>辣文化的“传播者”：</strong> 湘菜让“辣”从“地域口味”变成“全国流行”——
+                        20世纪90年代后，湘菜馆遍布全国，剁椒鱼头、小炒黄牛肉等菜品让“不吃辣的地区”逐渐接受辣味；
+                        同时，湘菜带动了湖南调料产业的发展，剁椒、豆豉、辣椒酱等“湘菜调料”成为全国热销品，
+                        让“在家做湘菜”成为可能，推动辣文化的普及。</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fa fa-check-circle text-xiang mt-1 mr-3"></i>
+                        <span><strong>湖湘文化的“活载体”：</strong> 湘菜与湖湘文化深度绑定——“辣”象征湖南人“坚韧不屈”的性格，
+                        家常小炒体现“务实实在”的生活态度，腊熏菜承载“就地取材”的生存智慧；
+                        同时，湘菜也是湖南“文化输出”的重要符号，通过湘菜馆、美食节，
+                        让世界认识湖南的饮食、文化与人文精神，成为湖南的“流动名片”。</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <p class="text-lg font-bold">中国八大菜系</p>
+                    <p class="text-gray-400 text-sm">探索中华美食文化</p>
+                </div>
+                <div class="flex space-x-4">
+                    <a href="index.html" class="text-gray-300 hover:text-white transition-colors">
+                        <i class="fa fa-home text-xl"></i>
+                    </a>
+                    <a href="index.html#vote" class="text-gray-300 hover:text-white transition-colors">
+                        <i class="fa fa-bar-chart text-xl"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-6 pt-6 text-center text-gray-400 text-sm">
+                <p>© 2023 八大菜系毕业设计网站 - 版权所有</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 返回顶部按钮 -->
+    <button id="back-to-top" class="fixed bottom-6 right-6 bg-gray-800 text-white w-12 h-12 rounded-full flex items-center justify-center shadow-lg opacity-0 invisible transition-all duration-300">
+        <i class="fa fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // 移动端菜单切换
+        document.getElementById('menu-toggle').addEventListener('click', function() {
+            const menu = document.getElementById('menu');
+            menu.classList.toggle('hidden');
+        });
+        // 导航栏滚动效果
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            const backToTop = document.getElementById('back-to-top');
+            if (window.scrollY > 100) {
+                navbar.classList.add('py-2');
+                navbar.classList.remove('py-3');
+                navbar.classList.add('shadow-lg');
+                backToTop.classList.remove('opacity-0', 'invisible');
+                backToTop.classList.add('opacity-100', 'visible');
+            } else {
+                navbar.classList.add('py-3');
+                navbar.classList.remove('py-2');
+                navbar.classList.remove('shadow-lg');
+                backToTop.classList.add('opacity-0', 'invisible');
+                backToTop.classList.remove('opacity-100', 'visible');
+            }
+        });
+        // 返回顶部功能
+        document.getElementById('back-to-top').addEventListener('click', function() {
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        });
+        // 平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.getElementById('menu').classList.add('hidden');
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
