@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>中国八大菜系 - 毕业设计</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        // 配置Tailwind自定义颜色
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        // 八大菜系主题色
+                        lu: '#E63946',     // 鲁菜-红色
+                        chuan: '#FFB703',  // 川菜-橙色
+                        yue: '#1D3557',    // 粤菜-深蓝色
+                        su: '#457B9D',     // 苏菜-天蓝色
+                        min: '#2A9D8F',    // 闽菜-青绿色
+                        zhe: '#F4A261',    // 浙菜-浅橙色
+                        xiang: '#E9C46A',  // 湘菜-黄色
+                        hui: '#264653',    // 徽菜-深绿色
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .text-shadow {
+                text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            }
+            .section-fade {
+                transition: background-color 0.5s ease;
+            }
+        }
+    </style>
+</head>
+<body class="font-sans">
+    <!-- 导航栏 -->
+    <nav id="navbar" class="fixed w-full bg-white/90 shadow-md z-50 transition-all duration-300">
+        <div class="container mx-auto px-4 py-3 flex flex-wrap items-center justify-between">
+            <a href="#home" class="text-2xl font-bold text-gray-800 flex items-center">
+                <i class="fa fa-cutlery mr-2"></i>八大菜系
+            </a>
+            
+            <!-- 移动端菜单按钮 -->
+            <button id="menu-toggle" class="md:hidden text-gray-800 focus:outline-none">
+                <i class="fa fa-bars text-xl"></i>
+            </button>
+            
+            <!-- 导航菜单 -->
+            <div id="menu" class="hidden w-full md:flex md:w-auto md:items-center mt-3 md:mt-0">
+                <ul class="flex flex-col md:flex-row md:space-x-6">
+                    <li><a href="#home" class="py-2 px-1 hover:text-lu transition-colors">首页</a></li>
+                    <li><a href="#lu" class="py-2 px-1 hover:text-lu transition-colors">鲁菜</a></li>
+                    <li><a href="#chuan" class="py-2 px-1 hover:text-chuan transition-colors">川菜</a></li>
+                    <li><a href="#yue" class="py-2 px-1 hover:text-yue transition-colors">粤菜</a></li>
+                    <li><a href="#su" class="py-2 px-1 hover:text-su transition-colors">苏菜</a></li>
+                    <li><a href="#min" class="py-2 px-1 hover:text-min transition-colors">闽菜</a></li>
+                    <li><a href="#zhe" class="py-2 px-1 hover:text-zhe transition-colors">浙菜</a></li>
+                    <li><a href="#xiang" class="py-2 px-1 hover:text-xiang transition-colors">湘菜</a></li>
+                    <li><a href="#hui" class="py-2 px-1 hover:text-hui transition-colors">徽菜</a></li>
+                    <li><a href="#vote" class="py-2 px-1 hover:text-gray-600 transition-colors">投票</a></li>
+                    <!-- <li><a href="#about" class="py-2 px-1 hover:text-gray-600 transition-colors">关于</a></li> -->
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 首页/英雄区 -->
+    <section id="home" class="pt-24 pb-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h1 class="text-4xl md:text-5xl font-bold mb-6 text-gray-800">中国八大菜系</h1>
+                <p class="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
+                    中国饮食文化源远流长，八大菜系各具特色，代表了中国烹饪艺术的最高水平。
+                    它们分别是：鲁菜、川菜、粤菜、苏菜、闽菜、浙菜、湘菜和徽菜。
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-4">
+                <a href="#lu" class="bg-lu text-white p-4 rounded-lg text-center hover:shadow-lg transition-shadow">
+                    <i class="fa fa-fire text-2xl mb-2"></i>
+                    <p>鲁菜</p>
+                </a>
+                <a href="#chuan" class="bg-chuan text-gray-800 p-4 rounded-lg text-center hover:shadow-lg transition-shadow">
+                    <i class="fa fa-bolt text-2xl mb-2"></i>
+                    <p>川菜</p>
+                </a>
+                <a href="#yue" class="bg-yue text-white p-4 rounded-lg text-center hover:shadow-lg transition-shadow">
+                    <i class="fa fa-leaf text-2xl mb-2"></i>
+                    <p>粤菜</p>
+                </a>
+                <a href="#su" class="bg-su text-white p-4 rounded-lg text-center hover:shadow-lg transition-shadow">
+                    <i class="fa fa-tint text-2xl mb-2"></i>
+                    <p>苏菜</p>
+                </a>
+                <a href="#min" class="bg-min text-white p-4 rounded-lg text-center hover:shadow-lg transition-shadow">
+                    <i class="fa fa-fish text-2xl mb-2"></i>
+                    <p>闽菜</p>
+                </a>
+                <a href="#zhe" class="bg-zhe text-gray-800 p-4 rounded-lg text-center hover:shadow-lg transition-shadow">
+                    <i class="fa fa-apple text-2xl mb-2"></i>
+                    <p>浙菜</p>
+                </a>
+                <a href="#xiang" class="bg-xiang text-gray-800 p-4 rounded-lg text-center hover:shadow-lg transition-shadow">
+                    <i class="fa fa-pepper-hot text-2xl mb-2"></i>
+                    <p>湘菜</p>
+                </a>
+                <a href="#hui" class="bg-hui text-white p-4 rounded-lg text-center hover:shadow-lg transition-shadow">
+                    <i class="fa fa-mountain text-2xl mb-2"></i>
+                    <p>徽菜</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 鲁菜 -->
+    <section id="lu" class="py-16 bg-lu text-white section-fade">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center gap-8">
+                <div class="md:w-1/2">
+                    <h2 class="text-3xl font-bold mb-4 text-shadow">鲁菜</h2>
+                    <p class="mb-4">鲁菜，又称山东菜，是中国传统四大菜系（也是八大菜系）中唯一的自发型菜系，历史最悠久、技法最丰富、难度最高、最见功力的菜系之一。</p>
+                    <h3 class="text-xl font-semibold mb-2">菜系特点</h3>
+                    <ul class="list-disc pl-5 mb-4">
+                        <li>注重调味纯正，以咸鲜为主</li>
+                        <li>善于制汤，清汤、奶汤的调制尤为讲究</li>
+                        <li>刀工精细，造型美观</li>
+                        <li>擅长爆、炒、烧、炸、扒等烹饪技法</li>
+                    </ul>
+                    <h3 class="text-xl font-semibold mb-2">代表菜品</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-white/20 px-3 py-1 rounded-full text-sm">九转大肠</span>
+                        <span class="bg-white/20 px-3 py-1 rounded-full text-sm">葱烧海参</span>
+                        <span class="bg-white/20 px-3 py-1 rounded-full text-sm">油焖大虾</span>
+                        <span class="bg-white/20 px-3 py-1 rounded-full text-sm">糖醋鲤鱼</span>
+                    </div>
+                </div>
+                <div class="md:w-1/2">
+                    <img src="https://picsum.photos/id/292/600/400" alt="鲁菜代表菜" class="rounded-lg shadow-xl w-full h-auto">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 川菜 -->
+    <section id="chuan" class="py-16 bg-chuan text-gray-800 section-fade">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row-reverse items-center gap-8">
+                <div class="md:w-1/2">
+                    <h2 class="text-3xl font-bold mb-4">川菜</h2>
+                    <p class="mb-4">川菜，即四川菜肴，是中国特色传统的四大菜系之一、中国八大菜系之一。川菜以善用麻辣调味著称，并以其别具一格的烹调方法和浓郁的地方风味闻名。</p>
+                    <h3 class="text-xl font-semibold mb-2">菜系特点</h3>
+                    <ul class="list-disc pl-5 mb-4">
+                        <li>调味多变，菜式多样，口味清鲜醇浓并重</li>
+                        <li>以善用麻辣调味著称</li>
+                        <li>注重刀工和火候，讲究色香味形</li>
+                        <li>擅长小炒、干烧、干煸等技法</li>
+                    </ul>
+                    <h3 class="text-xl font-semibold mb-2">代表菜品</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-gray-800/20 px-3 py-1 rounded-full text-sm">麻婆豆腐</span>
+                        <span class="bg-gray-800/20 px-3 py-1 rounded-full text-sm">水煮鱼</span>
+                        <span class="bg-gray-800/20 px-3 py-1 rounded-full text-sm">回锅肉</span>
+                        <span class="bg-gray-800/20 px-3 py-1 rounded-full text-sm">宫保鸡丁</span>
+                    </div>
+                </div>
+                <div class="md:w-1/2">
+                    <img src="https://picsum.photos/id/431/600/400" alt="川菜代表菜" class="rounded-lg shadow-xl w-full h-auto">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 粤菜 -->
+    <section id="yue" class="py-16 bg-yue text-white section-fade">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center gap-8">
+                <div class="md:w-1/2">
+                    <h2 class="text-3xl font-bold mb-4 text-shadow">粤菜</h2>
+                    <p class="mb-4">粤菜，即广东菜，是中国四大菜系、八大菜系之一。粤菜取百家之长，用料广博，选料珍奇，配料精巧，善于在模仿中创新，依食客喜好而烹制。</p>
+                    <h3 class="text-xl font-semibold mb-2">菜系特点</h3>
+                    <ul class="list-disc pl-5 mb-4">
+                        <li>选料精细，讲究鲜活</li>
+                        <li>口味清淡鲜爽，注重原味</li>
+                        <li>刀工精细，造型美观</li>
+                        <li>擅长蒸、炒、煎、炸、炖等技法</li>
+                    </ul>
+                    <h3 class="text-xl font-semibold mb-2">代表菜品</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-white/20 px-3 py-1 rounded-full text-sm">烤乳猪</span>
+                        <span class="bg-white/20 px-3 py-1 rounded-full text-sm">白切鸡</span>
+                        <span class="bg-white/20 px-3 py-1 rounded-full text-sm">烧鹅</span>
+                        <span class="bg-white/20 px-3 py-1 rounded-full text-sm">清蒸鱼</span>
+                    </div>
+                </div>
+                <div class="md:w-1/2">
+                    <img src="https://picsum.photos/id/488/600/400" alt="粤菜代表菜" class="rounded-lg shadow-xl w-full h-auto">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 苏菜 -->
+    <section id="su" class="py-16 bg-su text-white section-fade">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row-reverse items-center gap-8">
+                <div class="md:w-1/2">
+                    <h2 class="text-3xl font-bold mb-4">苏菜</h2>
+                    <p class="mb-4">苏菜，即江苏菜，是中国八大菜系之一，其味清鲜，咸甜得宜，刀工精细，造型美观，擅长炖、焖、煨、焐等烹调方法，重视调汤，保持原汁。</p>
+                    <h3 class="text-xl font-semibold mb-2">菜系特点</h3>
+                    <ul class="list-disc pl-5 mb-4">
+                        <li>口味清鲜平和，咸甜浓淡适中</li>
+                        <li>刀工精细，造型美观</li>
+                        <li>注重火候，擅长炖、焖、煨等技法</li>
+                        <li>讲究汤品，清汤、奶汤各具特色</li>
+                    </ul>
+                    <h3 class="text-xl font-semibold mb-2">代表菜品</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-white/20 px-3 py-1 rounded-full text-sm">盐水鸭</span>
+                        <span class="bg-white/20 px-3 py-1 rounded-full text-sm">清炖狮子头</span>
+                        <span class="bg-white/20 px-3 py-1 rounded-full text-sm">松鼠鳜鱼</span>
+                        <span class="bg-white/20 px-3 py-1 rounded-full text-sm">扬州炒饭</span>
+                    </div>
+                </div>
+                <div class="md:w-1/2">
+                    <img src="https://picsum.photos/id/225/600/400" alt="苏菜代表菜" class="rounded-lg shadow-xl w-full h-auto">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 闽菜 -->
+    <section id="min" class="py-16 bg-min text-white section-fade">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center gap-8">
+                <div class="md:w-1/2">
+                    <h2 class="text-3xl font-bold mb-4">闽菜</h2>
+                    <p class="mb-4">闽菜，即福建菜，是中国八大菜系之一，以福州菜为代表，融合了闽东、闽南、闽西、闽北、莆仙五地风味菜。闽菜以烹制山珍海味而著称。</p>
+                    <h3 class="text-xl font-semibold mb-2">菜系特点</h3>
+                    <ul class="list-disc pl-5 mb-4">
+                        <li>以海味为主要原料，注重鲜爽</li>
+                        <li>刀工巧妙，色调美观</li>
+                        <li>调味清鲜，重视汤菜</li>
+                        <li>擅长红糟调味和煨制技法</li>
+                    </ul>
+                    <h3 class="text-xl font-semibold mb-2">代表菜品</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-white/20 px-3 py-1 rounded-full text-sm">佛跳墙</span>
+                        <span class="bg-white/20 px-3 py-1 rounded-full text-sm">荔枝肉</span>
+                        <span class="bg-white/20 px-3 py-1 rounded-full text-sm">红糟肉</span>
+                        <span class="bg-white/20 px-3 py-1 rounded-full text-sm">海蛎煎</span>
+                    </div>
+                </div>
+                <div class="md:w-1/2">
+                    <img src="https://picsum.photos/id/674/600/400" alt="闽菜代表菜" class="rounded-lg shadow-xl w-full h-auto">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 浙菜 -->
+    <section id="zhe" class="py-16 bg-zhe text-gray-800 section-fade">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row-reverse items-center gap-8">
+                <div class="md:w-1/2">
+                    <h2 class="text-3xl font-bold mb-4">浙菜</h2>
+                    <p class="mb-4">浙菜，即浙江菜，是中国八大菜系之一，由杭州、宁波、绍兴、温州等地的风味菜构成。浙菜菜式小巧玲珑，清俊逸秀，菜品鲜美滑嫩，脆软清爽。</p>
+                    <h3 class="text-xl font-semibold mb-2">菜系特点</h3>
+                    <ul class="list-disc pl-5 mb-4">
+                        <li>注重原料的新鲜和本味</li>
+                        <li>口味清鲜，咸甜适中</li>
+                        <li>刀工精细，造型美观</li>
+                        <li>擅长炒、炸、烩、蒸等技法</li>
+                    </ul>
+                    <h3 class="text-xl font-semibold mb-2">代表菜品</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-gray-800/20 px-3 py-1 rounded-full text-sm">西湖醋鱼</span>
+                        <span class="bg-gray-800/20 px-3 py-1 rounded-full text-sm">东坡肉</span>
+                        <span class="bg-gray-800/20 px-3 py-1 rounded-full text-sm">龙井虾仁</span>
+                        <span class="bg-gray-800/20 px-3 py-1 rounded-full text-sm">叫化鸡</span>
+                    </div>
+                </div>
+                <div class="md:w-1/2">
+                    <img src="https://picsum.photos/id/429/600/400" alt="浙菜代表菜" class="rounded-lg shadow-xl w-full h-auto">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 湘菜 -->
+    <section id="xiang" class="py-16 bg-xiang text-gray-800 section-fade">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center gap-8">
+                <div class="md:w-1/2">
+                    <h2 class="text-3xl font-bold mb-4">湘菜</h2>
+                    <p class="mb-4">湘菜，即湖南菜，是中国八大菜系之一，以湘江流域、洞庭湖区和湘西山区三种地方风味为主。湘菜制作精细，用料上比较广泛，口味多变，品种繁多。</p>
+                    <h3 class="text-xl font-semibold mb-2">菜系特点</h3>
+                    <ul class="list-disc pl-5 mb-4">
+                        <li>口味重辣、香、鲜、酸</li>
+                        <li>刀工精妙，造型美观</li>
+                        <li>擅长腊、熏、煨、蒸、炒等技法</li>
+                        <li>注重调味，巧用辣椒</li>
+                    </ul>
+                    <h3 class="text-xl font-semibold mb-2">代表菜品</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-gray-800/20 px-3 py-1 rounded-full text-sm">剁椒鱼头</span>
+                        <span class="bg-gray-800/20 px-3 py-1 rounded-full text-sm">毛氏红烧肉</span>
+                        <span class="bg-gray-800/20 px-3 py-1 rounded-full text-sm">湘西外婆菜</span>
+                        <span class="bg-gray-800/20 px-3 py-1 rounded-full text-sm">小炒黄牛肉</span>
+                    </div>
+                </div>
+                <div class="md:w-1/2">
+                    <img src="https://picsum.photos/id/488/600/400" alt="湘菜代表菜" class="rounded-lg shadow-xl w-full h-auto">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 徽菜 -->
+    <section id="hui" class="py-16 bg-hui text-white section-fade">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row-reverse items-center gap-8">
+                <div class="md:w-1/2">
+                    <h2 class="text-3xl font-bold mb-4 text-shadow">徽菜</h2>
+                    <p class="mb-4">徽菜，即安徽菜，是中国八大菜系之一，起源于黄山麓下的歙县（古徽州）。徽菜以烹制山珍野味著称，擅长烧、炖、蒸，而少爆炒。</p>
+                    <h3 class="text-xl font-semibold mb-2">菜系特点</h3>
+                    <ul class="list-disc pl-5 mb-4">
+                        <li>擅长烹制山珍野味，注重原汁原味</li>
+                        <li>口味偏咸鲜，讲究火功</li>
+                        <li>善用火腿调味，汤汁浓郁</li>
+                        <li>擅长烧、炖、蒸等技法</li>
+                    </ul>
+                    <h3 class="text-xl font-semibold mb-2">代表菜品</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-white/20 px-3 py-1 rounded-full text-sm">臭鳜鱼</span>
+                        <span class="bg-white/20 px-3 py-1 rounded-full text-sm">毛豆腐</span>
+                        <span class="bg-white/20 px-3 py-1 rounded-full text-sm">火腿炖甲鱼</span>
+                        <span class="bg-white/20 px-3 py-1 rounded-full text-sm">徽州毛峰鱼</span>
+                    </div>
+                </div>
+                <div class="md:w-1/2">
+                    <img src="https://picsum.photos/id/493/600/400" alt="徽菜代表菜" class="rounded-lg shadow-xl w-full h-auto">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 投票区域 -->
+    <section id="vote" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold mb-8 text-center text-gray-800">你最喜欢的菜系是？</h2>
+            
+            <div class="max-w-3xl mx-auto">
+                <div id="voting-results" class="mb-8">
+                    <!-- 投票结果将通过JS动态生成 -->
+                </div>
+                
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+                    <button class="vote-btn bg-lu text-white py-3 px-2 rounded-lg hover:opacity-90 transition-opacity" data-cuisine="鲁菜">
+                        <i class="fa fa-fire mr-1"></i> 鲁菜
+                    </button>
+                    <button class="vote-btn bg-chuan text-gray-800 py-3 px-2 rounded-lg hover:opacity-90 transition-opacity" data-cuisine="川菜">
+                        <i class="fa fa-bolt mr-1"></i> 川菜
+                    </button>
+                    <button class="vote-btn bg-yue text-white py-3 px-2 rounded-lg hover:opacity-90 transition-opacity" data-cuisine="粤菜">
+                        <i class="fa fa-leaf mr-1"></i> 粤菜
+                    </button>
+                    <button class="vote-btn bg-su text-white py-3 px-2 rounded-lg hover:opacity-90 transition-opacity" data-cuisine="苏菜">
+                        <i class="fa fa-tint mr-1"></i> 苏菜
+                    </button>
+                    <button class="vote-btn bg-min text-white py-3 px-2 rounded-lg hover:opacity-90 transition-opacity" data-cuisine="闽菜">
+                        <i class="fa fa-fish mr-1"></i> 闽菜
+                    </button>
+                    <button class="vote-btn bg-zhe text-gray-800 py-3 px-2 rounded-lg hover:opacity-90 transition-opacity" data-cuisine="浙菜">
+                        <i class="fa fa-apple mr-1"></i> 浙菜
+                    </button>
+                    <button class="vote-btn bg-xiang text-gray-800 py-3 px-2 rounded-lg hover:opacity-90 transition-opacity" data-cuisine="湘菜">
+                        <i class="fa fa-pepper-hot mr-1"></i> 湘菜
+                    </button>
+                    <button class="vote-btn bg-hui text-white py-3 px-2 rounded-lg hover:opacity-90 transition-opacity" data-cuisine="徽菜">
+                        <i class="fa fa-mountain mr-1"></i> 徽菜
+                    </button>
+                </div>
+                
+                <p id="vote-message" class="mt-4 text-center text-gray-600"></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 关于页面 -->
+    <!-- <section id="about" class="py-16 bg-white">
+        <div class="container mx-auto px-4 max-w-3xl">
+            <h2 class="text-3xl font-bold mb-6 text-gray-800 text-center">关于本毕业设计</h2>
+            
+            <div class="bg-gray-50 p-6 rounded-lg shadow-sm">
+                <h3 class="text-xl font-semibold mb-3 text-gray-700">项目介绍</h3>
+                <p class="mb-4 text-gray-600">
+                    本网站是关于中国八大菜系的介绍网站，旨在通过简洁明了的方式展示中国丰富的饮食文化。
+                    网站采用了现代前端技术构建，界面简洁大方，功能完整，符合大学生毕业设计的要求。
+                </p>
+                
+                <h3 class="text-xl font-semibold mb-3 text-gray-700">技术栈</h3>
+                <ul class="list-disc pl-5 mb-4 text-gray-600">
+                    <li>HTML5 语义化标签</li>
+                    <li>Tailwind CSS v3 样式框架</li>
+                    <li>JavaScript 交互功能</li>
+                    <li>Font Awesome 图标库</li>
+                </ul>
+                
+                <h3 class="text-xl font-semibold mb-3 text-gray-700">设计说明</h3>
+                <p class="text-gray-600">
+                    网站采用纯色背景区分不同菜系板块，每个菜系使用与其特色相符的颜色，既美观又便于用户识别。
+                    整体设计注重用户体验，导航清晰，内容易于阅读，同时兼顾了响应式布局，可在不同设备上良好显示。
+                </p>
+            </div>
+            
+            <div class="mt-8 text-center text-gray-500">
+                <p>毕业设计 - 中国八大菜系介绍网站</p>
+                <p class="mt-1">设计者：大学生</p>
+                <p class="mt-1">日期：2023年</p>
+            </div>
+        </div>
+    </section> -->
+
+    <!-- 页脚 -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <p class="text-lg font-bold">中国八大菜系</p>
+                    <p class="text-gray-400 text-sm">探索中华美食文化</p>
+                </div>
+                
+                <div class="flex space-x-4">
+                    <a href="#home" class="text-gray-300 hover:text-white transition-colors">
+                        <i class="fa fa-home text-xl"></i>
+                    </a>
+                    <a href="#vote" class="text-gray-300 hover:text-white transition-colors">
+                        <i class="fa fa-bar-chart text-xl"></i>
+                    </a>
+                    <a href="#about" class="text-gray-300 hover:text-white transition-colors">
+                        <i class="fa fa-info-circle text-xl"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-6 pt-6 text-center text-gray-400 text-sm">
+                <p>© 2023 八大菜系毕业设计网站 - 版权所有</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 返回顶部按钮 -->
+    <button id="back-to-top" class="fixed bottom-6 right-6 bg-gray-800 text-white w-12 h-12 rounded-full flex items-center justify-center shadow-lg opacity-0 invisible transition-all duration-300">
+        <i class="fa fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // 移动端菜单切换
+        document.getElementById('menu-toggle').addEventListener('click', function() {
+            const menu = document.getElementById('menu');
+            menu.classList.toggle('hidden');
+        });
+
+        // 导航栏滚动效果
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            const backToTop = document.getElementById('back-to-top');
+            
+            if (window.scrollY > 100) {
+                navbar.classList.add('py-2');
+                navbar.classList.remove('py-3');
+                navbar.classList.add('shadow-lg');
+                
+                backToTop.classList.remove('opacity-0', 'invisible');
+                backToTop.classList.add('opacity-100', 'visible');
+            } else {
+                navbar.classList.add('py-3');
+                navbar.classList.remove('py-2');
+                navbar.classList.remove('shadow-lg');
+                
+                backToTop.classList.add('opacity-0', 'invisible');
+                backToTop.classList.remove('opacity-100', 'visible');
+            }
+        });
+
+        // 返回顶部功能
+        document.getElementById('back-to-top').addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // 平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                // 关闭移动菜单（如果打开）
+                document.getElementById('menu').classList.add('hidden');
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // 投票功能
+        document.addEventListener('DOMContentLoaded', function() {
+            // 初始化投票数据
+            let votes = JSON.parse(localStorage.getItem('cuisineVotes')) || {
+                '鲁菜': 0,
+                '川菜': 0,
+                '粤菜': 0,
+                '苏菜': 0,
+                '闽菜': 0,
+                '浙菜': 0,
+                '湘菜': 0,
+                '徽菜': 0
+            };
+            
+            // 已投票标记
+            let hasVoted = localStorage.getItem('hasVoted') === 'true';
+            
+            // 更新投票结果显示
+            function updateVoteResults() {
+                const resultsContainer = document.getElementById('voting-results');
+                resultsContainer.innerHTML = '';
+                
+                // 计算总票数
+                const totalVotes = Object.values(votes).reduce((a, b) => a + b, 0);
+                
+                // 创建每个菜系的进度条
+                Object.keys(votes).forEach(cuisine => {
+                    const percentage = totalVotes > 0 ? (votes[cuisine] / totalVotes) * 100 : 0;
+                    const colorClass = getColorClass(cuisine);
+                    
+                    const resultItem = document.createElement('div');
+                    resultItem.className = 'mb-3';
+                    
+                    resultItem.innerHTML = `
+                        <div class="flex justify-between mb-1">
+                            <span class="font-medium">${cuisine}</span>
+                            <span>${votes[cuisine]} 票 (${percentage.toFixed(1)}%)</span>
+                        </div>
+                        <div class="w-full bg-gray-200 rounded-full h-2.5">
+                            <div class="${colorClass} h-2.5 rounded-full" style="width: ${percentage}%"></div>
+                        </div>
+                    `;
+                    
+                    resultsContainer.appendChild(resultItem);
+                });
+            }
+            
+            // 获取菜系对应的颜色类
+            function getColorClass(cuisine) {
+                const colorMap = {
+                    '鲁菜': 'bg-lu',
+                    '川菜': 'bg-chuan',
+                    '粤菜': 'bg-yue',
+                    '苏菜': 'bg-su',
+                    '闽菜': 'bg-min',
+                    '浙菜': 'bg-zhe',
+                    '湘菜': 'bg-xiang',
+                    '徽菜': 'bg-hui'
+                };
+                return colorMap[cuisine] || 'bg-gray-500';
+            }
+            
+            // 投票按钮点击事件
+            document.querySelectorAll('.vote-btn').forEach(button => {
+                button.addEventListener('click', function() {
+                    if (hasVoted) {
+                        document.getElementById('vote-message').textContent = '您已经投过票了！';
+                        document.getElementById('vote-message').className = 'mt-4 text-center text-yellow-600';
+                        return;
+                    }
+                    
+                    const cuisine = this.getAttribute('data-cuisine');
+                    votes[cuisine]++;
+                    
+                    // 保存到本地存储
+                    localStorage.setItem('cuisineVotes', JSON.stringify(votes));
+                    localStorage.setItem('hasVoted', 'true');
+                    hasVoted = true;
+                    
+                    // 更新显示
+                    updateVoteResults();
+                    
+                    // 显示成功消息
+                    document.getElementById('vote-message').textContent = `感谢您为${cuisine}投票！`;
+                    document.getElementById('vote-message').className = 'mt-4 text-center text-green-600';
+                });
+            });
+            
+            // 初始显示投票结果
+            updateVoteResults();
+        });
+    </script>
+</body>
+</html>
